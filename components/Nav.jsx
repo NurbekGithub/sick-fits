@@ -3,7 +3,7 @@ import StyledNav from './styles/NavStyles';
 export const Nav = props => (
     <StyledNav>
         <Link href='/items'>
-            <a>Items</a>
+            <a>Shop</a>
         </Link>
         <Link href='/sell'>
             <a>Sell</a>

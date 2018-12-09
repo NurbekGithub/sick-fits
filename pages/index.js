@@ -1,7 +1,7 @@
-
+import Items from '../components/Items';
 const Home = props => (
     <div>
-        <p>Hey home!</p>
+        <Items />
     </div>
 )
 
