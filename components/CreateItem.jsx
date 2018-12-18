@@ -68,7 +68,7 @@ class CreateItem extends React.Component {
           <Form onSubmit={async e => {
             e.preventDefault();
             const res = await createItem();
-            Router.push(`/item${res.data.createItem.id}`) 
+            Router.push(`/item${res.data.createItem.id}`)
           }}>
             <ErrorMessage error={error}/>
             <h2>Sell an item!</h2>
