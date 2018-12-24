@@ -65,7 +65,7 @@ class UpdateItem extends React.Component {
         if(loading) return <p>Loading...</p>
         if(!data.item) return <h3>Not fount {this.props.id}</h3>
         return (
-          <Mutation mutation={UPDATE_ITEM_MUTATION} variables={this.state}>
+          <Mutation mutation={UPDATE_ITEM_MUTATION}>
           {(updateItem, { loading, error }) =>
             <Form onSubmit={e => {
               e.preventDefault();

@@ -55,10 +55,12 @@ class CreateItem extends React.Component {
       body: data
     });
     const file = await res.json();
-    this.setState({ 
-      image: file.secure_url,
-      largeImage: file.eager[0].secure_url
-    })
+    if(file.url) {
+      this.setState({ 
+        image: file.secure_url,
+        largeImage: file.eager[0].secure_url
+      })
+    };
   }
 
   render() {
@@ -68,7 +70,7 @@ class CreateItem extends React.Component {
           <Form onSubmit={async e => {
             e.preventDefault();
             const res = await createItem();
-            Router.push(`/item${res.data.createItem.id}`)
+            Router.push(`/item?id=${res.data.createItem.id}`);
           }}>
             <ErrorMessage error={error}/>
             <h2>Sell an item!</h2>
