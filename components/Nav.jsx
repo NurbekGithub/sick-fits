@@ -1,29 +1,38 @@
-import Link from 'next/link';
-import User from './User';
-import StyledNav from './styles/NavStyles';
-import { dump } from '../lib/withData';
+import Link from "next/link";
+import User from "./User";
+import StyledNav from "./styles/NavStyles";
+import { Signout } from "./Signout";
+
 export const Nav = props => (
-    <StyledNav>
-        <User>
-            {({data: {me}}) => {
-                if(me) return me.name
-                return null
-            }}
-        </User>
-        <Link href='/items'>
+  <User>
+    {({ data: { me } }) => {
+      return (
+        <StyledNav>
+          <Link href="/items">
             <a>Shop</a>
-        </Link>
-        <Link href='/sell'>
-            <a>Sell</a>
-        </Link>
-        <Link href='/signup'>
-            <a>Signup</a>
-        </Link>
-        <Link href='/orders'>
-            <a>Orders</a>
-        </Link>
-        <Link href='/me'>
-            <a>Accound</a>
-        </Link>
-    </StyledNav>
-)
+          </Link>
+          {me ? (
+            <>
+              <Link href="/sell">
+                <a>Sell</a>
+              </Link>
+              <Link href="/orders">
+                <a>Orders</a>
+              </Link>
+              <Link href="/me">
+                <a>Accound</a>
+              </Link>
+              <Signout />
+            </>
+          ) : (
+            <>
+              <Link href="/signup">
+                <a>Sign In</a>
+              </Link>
+            </>
+          )}
+        </StyledNav>
+      );
+    }}
+  </User>
+);
