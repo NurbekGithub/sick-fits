@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const CartStyles = styled.div`
   padding: 20px;
-  position: relative;
   background: white;
   position: fixed;
   height: 100%;
@@ -40,7 +39,7 @@ const CartStyles = styled.div`
     margin: 0;
     padding: 0;
     list-style: none;
-    overflow: scroll;
+    overflow: auto;
   }
 `;
 

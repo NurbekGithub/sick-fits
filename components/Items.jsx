@@ -13,7 +13,7 @@ export const ALL_ITEM_QUERY = gql`
       title
       price
       description
-      image
+      image 
       largeImage
     }
   }
