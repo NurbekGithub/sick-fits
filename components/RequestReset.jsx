@@ -4,7 +4,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import ErrorMessage from './ErrorMessage';
 
-const REQUEST_RESET_MUTATION = gql`
+export const REQUEST_RESET_MUTATION = gql`
     mutation REQUEST_RESET_MUTATION($email: String!) {
         requestReset(email: $email) {
             message
@@ -27,7 +27,7 @@ class RequestReset extends React.Component {
             >
                 {(request, { error, loading, called }) => {
                     return (
-                        <Form method='POST' onSubmit={e => {
+                        <Form method='POST' data-test='reset' onSubmit={e => {
                             e.preventDefault();
                             request();
                         }}>

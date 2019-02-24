@@ -10,7 +10,7 @@ export const PleaseSignin = props => (
       return me 
         ? props.children 
         : <div>
-            <p>Plaese Sign In before Continuing</p>
+            <p>Please Sign In before Continuing</p>
             <Signin />
         </div>
     }}

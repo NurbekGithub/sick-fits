@@ -9,7 +9,7 @@ import calcTotalPrice from "../lib/calcTotalPrice";
 import ErrorMessage from "./ErrorMessage";
 import User, { CURRENT_USER_QUERY } from "./User";
 
-const CREATE_ORDER_MUTATION = gql`
+export const CREATE_ORDER_MUTATION = gql`
   mutation createOrder($token: String!) {
     createOrder(token: $token) {
       id
@@ -44,8 +44,9 @@ class TakeMyMoney extends React.Component {
   render() {
     return (
       <User>
-        {({ data: { me } }) => {
+        {({ data: { me }, loading }) => {
           if (!me) return null;
+          if (loading) return <p>Loading...</p>
           return (
             <Mutation mutation={CREATE_ORDER_MUTATION} refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
               {(createOrder) => (

@@ -8,7 +8,7 @@ import formatMoney from '../lib/formatMoney';
 import ErrorMessage from './ErrorMessage';
 import OrderStyles from './styles/OrderStyles';
 
-const SINGLE_ORDER_QUERY = gql`
+export const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($id: ID!) {
     order(id: $id) {
       id
@@ -42,8 +42,8 @@ class Order extends React.Component {
         <Query query={SINGLE_ORDER_QUERY} variables={{id: this.props.id}}>
           {({data: {order}, loading, error}) => {
             if(error) return <ErrorMessage error={error}/>
-            if(loading) return <p>Loading...</p>
-            return <OrderStyles>
+            if(loading) return <p data-test='orderLoading'>Loading...</p>
+            return <OrderStyles data-test='order'>
               <Head>
                 <title>Sick Fits - Order {order.id}</title>
               </Head>

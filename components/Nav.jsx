@@ -10,7 +10,7 @@ export const Nav = props => (
   <User>
     {({ data: { me } }) => {
       return (
-        <StyledNav>
+        <StyledNav data-test='nav'>
           <Link href="/items">
             <a>Shop</a>
           </Link>

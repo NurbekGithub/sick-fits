@@ -29,11 +29,11 @@ export const CREATE_ITEM_MUTATION = gql`
 class CreateItem extends React.Component {
 
   state = {
-    title: 'coctail',
-    description: 'really tasty coctail',
+    title: '',
+    description: '',
     image: '',
     largeImage: '',
-    price: 1000
+    price: 0
   }
 
   handleChange = e => {
@@ -55,7 +55,7 @@ class CreateItem extends React.Component {
       body: data
     });
     const file = await res.json();
-    if(file.url) {
+    if(file.secure_url) {
       this.setState({ 
         image: file.secure_url,
         largeImage: file.eager[0].secure_url
@@ -67,7 +67,7 @@ class CreateItem extends React.Component {
     return (
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
         {(createItem, { loading, error }) =>
-          <Form onSubmit={async e => {
+          <Form data-test='createItem' onSubmit={async e => {
             e.preventDefault();
             const res = await createItem();
             Router.push(`/item?id=${res.data.createItem.id}`);
@@ -111,7 +111,6 @@ class CreateItem extends React.Component {
               <label htmlFor="description">
                 Description
                 <textarea
-                  type="number"
                   name='description'
                   placeholder='Description'
                   required

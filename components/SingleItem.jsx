@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import ErrorMessage from './ErrorMessage';
 
-const SINGLE_ITEM_QUERY = gql`
+export const SINGLE_ITEM_QUERY = gql`
     query SINGLE_ITEM_QUERY($id: ID!) {
         item(where: { id: $id }) {
             id,

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Order /> renders and matches snap 1`] = `
+<p
+  data-test="orderLoading"
+>
+  Loading...
+</p>
+`;
